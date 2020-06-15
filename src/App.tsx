@@ -6,10 +6,6 @@ import SearchBar from './components/SearchBar';
 import VideoDetail from './components/VideoDetail';
 import VideoList from './containers/VideoList';
 
-type Data = {
-  
-}
-
 const App = () => {
   const [videos, setVideos] = useState<object[]>([]);
   const [selectedVideo, setSelectedVideo] = useState<object | null>(null);
@@ -28,12 +24,12 @@ const App = () => {
         maxResults: 8,
         key: API_KEY,
       },
-    }).catch(error => console.log(error));
+    });
     setVideos([...response.data.items]);
     setSelectedVideo(response.data.items[0]);
   };
 
-  const onVideoSelect = (video: object): void => {
+  const onVideoSelect = (video: any): void => {
     setSelectedVideo(video);
   };
 
@@ -55,4 +51,3 @@ const App = () => {
 };
 
 export default App;
-  
